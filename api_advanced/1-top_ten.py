@@ -14,7 +14,7 @@ def top_ten(subreddit):
     :hot_list - (list) list of ten hot posts of subreddit
     """
     if subreddit is None or isinstance(subreddit, str) is False:
-        return None
+        print(None)
 
     headers = {"User-agent": "myAPI/0.0.1"}
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
@@ -26,4 +26,4 @@ def top_ten(subreddit):
         for post in all_posts:
             print(post.get('data').get('title'))
     except:
-        return None
+        print(None)
