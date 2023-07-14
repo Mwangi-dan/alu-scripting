@@ -15,7 +15,7 @@ def number_of_subscribers(subreddit):
 
     :returns - (int) number of subscribers
     """
-    if subreddit is None or isInstance(subreddit, str) is False:
+    if subreddit is None or not isInstance(subreddit, str):
         return 0
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
