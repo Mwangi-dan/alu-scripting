@@ -15,7 +15,7 @@ def number_of_subscribers(subreddit):
 
     :returns - (int) number of subscribers
     """
-    url = "https://www.reddit.com/{}/about.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {'User-agent': 'myAPI/0.0.1'}
     res = requests.get(url, headers=headers)
     subs = res.json()['data']['subscribers']
