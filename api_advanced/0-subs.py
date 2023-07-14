@@ -22,7 +22,8 @@ def number_of_subscribers(subreddit):
     headers = {'User-agent': 'myAPI/0.0.1'}
     res = requests.get(url, headers=headers)
     subs = res.json()['data']['subscribers']
-    if subs is None:
-        return 0
-    else:
+
+    try:
         return subs
+    except:
+        return 0
