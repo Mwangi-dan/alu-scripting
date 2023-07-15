@@ -14,7 +14,7 @@ def recursive(subreddit, hot_list=[], after=[]):
                                                                  after)
     headers = {'User-agent': 'myAPI/0.0.1'}
     res = requests.get(url, headers=headers)
-    if res != 200:
+    if res.status_code != 200:
         return None
 
     # All the data
