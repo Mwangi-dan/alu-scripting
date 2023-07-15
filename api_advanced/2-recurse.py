@@ -6,7 +6,7 @@ using recursion with Reddit's API
 import requests
 
 
-def recursive(subreddit, hot_list=[], after=[]):
+def recursive(subreddit, hot_list=[], after=None):
     if subreddit is None or not isinstance(subreddit, str):
         return None
 
