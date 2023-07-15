@@ -32,6 +32,6 @@ def recursive(subreddit, hot_list=[], after=[]):
             hot_list.append(child.get('data').get('title'))
 
         # Recursion for after pages
-        return recurse(subreddit, hot_list, after)
+        return recursive(subreddit, hot_list, after)
     except:
         return None
