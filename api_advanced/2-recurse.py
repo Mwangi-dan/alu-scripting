@@ -6,7 +6,7 @@ using recursion with Reddit's API
 import requests
 
 
-def recursive(subreddit, hot_list=[], after=None):
+def recurse(subreddit, hot_list=[], after=None):
     if subreddit is None or not isinstance(subreddit, str):
         return None
 
@@ -32,6 +32,6 @@ def recursive(subreddit, hot_list=[], after=None):
             hot_list.append(child.get('data').get('title'))
 
         # Recursion for after pages
-        return recursive(subreddit, hot_list, after)
+        return recurse(subreddit, hot_list, after)
     except:
         return None
