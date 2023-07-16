@@ -4,11 +4,7 @@ Module with function that counts words
 given in argument if it exists in all the titles of the
 given subreddit
 """
-import requests
-
-
-
-m requests import get
+from requests import get
 
 
 def count_words(subreddit, word_list=[], after=None, cleaned_dict=None):
@@ -33,7 +29,7 @@ def count_words(subreddit, word_list=[], after=None, cleaned_dict=None):
     if subreddit is None or not isinstance(subreddit, str):
         return None
 
-    user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
+    user_agent = {'User-agent': 'myAPI/0.0.1'}
 
     url = 'https://www.reddit.com/r/{}/hot/.json?after={}'.format(subreddit,
                                                                   after)
