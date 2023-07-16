@@ -17,7 +17,8 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
     if subreddit is None or not isinstance(subreddit, str):
         return None
 
-    clean_word_list = clean_list(word_list)
+    lowercase_list = [x.lower() for x in my_list]
+    clean_word_list = list(dict.fromkeys(lowercase_list))
 
     if clean_dict is None:
         clean_dict = dict.fromkeys(clean_word_list)
@@ -58,15 +59,3 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
 
     else:
         return None
-
-
-def clean_list(my_list):
-    """
-    Removes duplicates from list
-
-    :my_list - (list) list to be cleaned
-    :return: (list) cleaned list
-    """
-    # Make all words the same case
-    my_list = [x.lower() for x in my_list]
-    return list(dict.fromkeys(my_list))
