@@ -4,7 +4,7 @@ Module with function that counts words
 given in argument if it exists in all the titles of the
 given subreddit
 """
-mport requests
+import requests
 
 
 def count_words(subreddit, word_list=[], after=None, clean_dict=None):
