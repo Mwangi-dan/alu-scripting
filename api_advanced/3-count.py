@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module with function to count words
+Module with count_words function
 """
 import requests
 
@@ -22,10 +22,12 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
         clean_dict = dict.fromkeys(clean_word_list)
 
     headers = {'User-Agent': 'myAPI/0.0.1'}
-    query_strings = '?show="all"&limit=100&after={}'.format(after)
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit) + query_strings
+    params = {'show': 'all'}
 
-    response = requests.get(url, headers=headers)
+    url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(subreddit,
+                                                                 after)
+
+    response = requests.get(url, headers=headers, params=params)
 
     if response:
         all = response.json()
@@ -39,7 +41,7 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
                 print('{}: {}'.format(k[0], k[1]))
 
             return None
- 
+
         for i in raw:
             title = i.get('data').get('title')
             title_split = title.split()
