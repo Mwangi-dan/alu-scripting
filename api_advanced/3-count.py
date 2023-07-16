@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """
-Mdule with function to count words
+Module with function to count words
 """
+
+
 def count_words(subreddit, word_list, hot_list=[], viewed_count=0, after=''):
     """
     Queries the Reddit API, parses the title of all hot articles, and prints a
