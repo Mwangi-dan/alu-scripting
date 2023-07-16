@@ -12,7 +12,7 @@ def recurse(subreddit, hot_list=[], after=None):
     the first 10 hot posts listed for a given subreddit.
     """
 
-    headers = {'User-Agent': 'Diego'}
+    headers = {'User-Agent': 'myAPI/0.0.1'}
     params = {"limit": 100, 'after': after}
     response = requests.get("https://www.reddit.com/r/{}/hot/.json".
                             format(subreddit), headers=headers, params=params)
