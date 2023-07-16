@@ -13,7 +13,7 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
     the number of times the words in the list appear in the
     titles.
     """
- 
+
     if subreddit is None or not isinstance(subreddit, str):
         return None
 
