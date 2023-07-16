@@ -17,7 +17,7 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
     if subreddit is None or not isinstance(subreddit, str):
         return None
 
-    lowercase_list = [x.lower() for x in my_list]
+    lowercase_list = [x.lower() for x in word_list]
     clean_word_list = list(dict.fromkeys(lowercase_list))
 
     if clean_dict is None:
