@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 """
 Module with function that counts words
-given in argument if it exists in all the titles of the 
+given in argument if it exists in all the titles of the
 given subreddit
 """
 import requests
+
+
 def count_words(subreddit, word_list=[], after=None, clean_dict=None):
     """
     Function that queries subreddit for all titles and counts
-    the number of times the words in the list appear in the 
+    the number of times the words in the list appear in the
     titles.
     """
 
@@ -24,7 +26,7 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
     params = {'show': 'all'}
 
     url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(subreddit,
-                                                                after)
+                                                                 after)
 
     response = requests.get(url, headers=headers, params=params)
 
@@ -40,7 +42,7 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
                 print('{}: {}'.format(k[0], k[1]))
 
             return None
-        
+
         for i in raw:
             title = i.get('data').get('title')
             title_split = title.split()
@@ -56,12 +58,14 @@ def count_words(subreddit, word_list=[], after=None, clean_dict=None):
 
     else:
         return None
+
+
 def clean_list(my_list):
     """
     Removes duplicates from list
 
     :my_list - (list) list to be cleaned
-    :return: (list) cleaned list    
+    :return: (list) cleaned list
     """
     # Make all words the same case
     my_list = [x.lower() for x in my_list]
