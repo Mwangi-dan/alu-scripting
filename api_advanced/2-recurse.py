@@ -7,33 +7,27 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    if subreddit is None or not isinstance(subreddit, str):
-        return None
+    """
+    function that queries the Reddit API and prints the titles of
+    the first 10 hot posts listed for a given subreddit.
+    """
 
-    url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(subreddit,
-                                                                 after)
-    headers = {'User-agent': 'myAPI/0.0.1'}
-    params = {'limit': 100, 'after': after}
-
-    res = requests.get(url, headers=headers, params=params)
-    if res.status_code != 200:
-        return None
-
-    # All the data
-    all = res.json()
-
-    try:
-        children_list = all.get('data').get('children')
-        after = all.get('data').get('after')
-
-        if after is None:
-            return hot_list
-
-        # get titles from children list
-        for child in children_list:
-            hot_list.append(child.get('data').get('title'))
-
-        # Recursion for after pages
-        return recurse(subreddit, hot_list, after)
-    except:
-        return None
+    headers = {'User-Agent': 'Diego'}
+    params = {"limit": 100, 'after': after}
+    response = requests.get("https://www.reddit.com/r/{}/hot/.json".
+                            format(subreddit), headers=headers, params=params)
+    if response:
+        after = response.json().get("data").get("after")
+        if after:
+            recurse(subreddit, hot_list, after=after)
+            titles = response.json().get("data").get("children")
+            for title in titles:
+                hot_list.append(title.get("data").get("title"))
+            return(hot_list)
+        else:
+            titles = response.json().get("data").get("children")
+            for title in titles:
+                hot_list.append(title.get("data").get("title"))
+            return(hot_list)
+    else:
+        return(None)
